@@ -1,62 +1,45 @@
 package com.example.myapp;
 
-import android.app.ListActivity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class FourthActivity extends ListActivity implements AdapterView.OnItemLongClickListener{
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-     String[] notes = new String[]{};
+public class FourthActivity extends AppCompatActivity {
 
-    private ArrayAdapter<String> mAdapter;
-    private ArrayList<String> Names = new ArrayList<>(Arrays.asList(notes));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourth);
 
+        final TextView textView = findViewById(R.id.textView);
 
-        mAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, Names);
-        setListAdapter(mAdapter);
-        getListView().setOnItemLongClickListener(this);
+        NetworkService.getInstance()
+                .getJSONApi()
+                .getPostWithID(1)
+                .enqueue(new Callback<Post>() {
+                    @Override
+                    public void onResponse(@NonNull Call<Post> call, @NonNull Response<Post> response) {
+                        Post post = response.body();
 
-    }
+                        textView.append(post.getId() + "\n");
+                        textView.append(post.getUserId() + "\n");
+                        textView.append(post.getTitle() + "\n");
+                        textView.append(post.getBody() + "\n");
+                    }
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        switch (position){
-            case (0):
-                Intent browserIntent0 = new
-                        Intent(Intent.ACTION_VIEW, Uri.parse("https://rozetka.com.ua/ua/"));
-                startActivity(browserIntent0);
-                break;
-        }
+                    @Override
+                    public void onFailure(@NonNull Call<Post> call, @NonNull Throwable t) {
 
-        Toast.makeText(getApplicationContext(),"Вы выбрали " + l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        String selectedItem = parent.getItemAtPosition(position).toString();
-
-        mAdapter.remove(selectedItem);
-        mAdapter.notifyDataSetChanged();
-
-        Toast.makeText(getApplicationContext(),
-                selectedItem + " удалён.",
-                Toast.LENGTH_SHORT).show();
-        return true;
+                        textView.append("Error occurred while getting request!");
+                        t.printStackTrace();
+                    }
+                });
     }
 }

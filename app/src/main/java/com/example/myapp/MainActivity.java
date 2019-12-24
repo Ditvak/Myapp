@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-   Button button1, button2, button3, button4;
+   Button button1, button2, button3, button4, button5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         button4 = findViewById(R.id.button4);
         button4.setOnClickListener(this);
+
+        button5 = findViewById(R.id.button5);
+        button5.setOnClickListener(this);
     }
 
     @Override
@@ -47,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button4:
                 Intent intent4 = new Intent(this, FifthActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.button5:
+                Intent intent5 = new Intent(this, MapActivity.class);
+                startActivity(intent5);
                 break;
             default:
                 break;

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "705402846172",
+    "firebase_url": "https://dulcet-record-263019.firebaseio.com",
+    "project_id": "dulcet-record-263019",
+    "storage_bucket": "dulcet-record-263019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705402846172:android:9735d6e5baca29bd792d19",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705402846172-vq9jot3se4smkf5713bpcs4jgcv7ffoj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPmZLp6tkylxMXJXnS8RPajrLVMGp6tO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705402846172-vq9jot3se4smkf5713bpcs4jgcv7ffoj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
