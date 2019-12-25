@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent4);
                 break;
             case R.id.button5:
-                Intent intent5 = new Intent(this, MapActivity.class);
+                Intent intent5 = new Intent(this, MapsActivity.class);
                 startActivity(intent5);
                 break;
             default:

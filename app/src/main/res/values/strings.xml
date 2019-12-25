@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">MyApp</string>
     <string name="title_activity_second">SecondActivity</string>
-    <string name="google_maps_key">AIzaSyAau_c_qJlKvPdp8nVsvL_Y_puW_mvOMaI</string>
-
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAau_c_qJlKvPdp8nVsvL_Y_puW_mvOMaI</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
 
 </resources>
